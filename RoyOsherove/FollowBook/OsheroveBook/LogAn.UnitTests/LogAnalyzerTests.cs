@@ -27,6 +27,14 @@ namespace LogAn.UnitTests
             Assert.AreEqual(expectedResult, result);
         }
 
+
+        [Test]
+        public void IsValidLogFileName_EmptyFileName_Throws()
+        {
+            var ex = Assert.Catch<Exception>(() => logAnalyzer.IsValidLogFileName(""));
+            StringAssert.Contains("filename has to be provided", ex.Message);
+        }
+
         [TearDown]
         public void TearDown()
         {
