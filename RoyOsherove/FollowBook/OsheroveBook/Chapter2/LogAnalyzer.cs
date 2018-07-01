@@ -8,8 +8,12 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
+        public bool WasLastFileNAmeValid { get; set; }
+
         public bool IsValidLogFileName(string fileName)
         {
+            WasLastFileNAmeValid = false;
+
             if (string.IsNullOrEmpty(fileName))
             {
                 throw new ArgumentException("filename has to be provided");
@@ -18,6 +22,8 @@ namespace LogAn
             {
                 return false;
             }
+
+            WasLastFileNAmeValid = true;
             return true;
         }
     }
