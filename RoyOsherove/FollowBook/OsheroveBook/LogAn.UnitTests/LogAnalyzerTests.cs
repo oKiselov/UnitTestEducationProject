@@ -20,6 +20,32 @@ namespace LogAn.UnitTests
             bool result = logAnalyzer.IsValidLogFileName("short.ext");
             Assert.True(result);
         }
+
+        [Test]
+        public void overrideTest()
+        {
+            FakeExtensionManager stub = new FakeExtensionManager();
+            stub.WillBeValid = true;
+
+            TestableLogAnalyzer logAnalyzer = new TestableLogAnalyzer(stub);
+            bool result = logAnalyzer.IsValidLogFileName("file.txt");
+            Assert.True(result);
+        }
+    }
+
+    class TestableLogAnalyzer: LogAnalyzerUsingFactoryMethod
+    {
+        public IExtensionManager manager;
+
+        public TestableLogAnalyzer(IExtensionManager manager)
+        {
+            this.manager = manager;
+        }
+
+        protected override IExtensionManager GetManager()
+        {
+            return this.manager;
+        }
     }
 
     internal class FakeExtensionManager : IExtensionManager
