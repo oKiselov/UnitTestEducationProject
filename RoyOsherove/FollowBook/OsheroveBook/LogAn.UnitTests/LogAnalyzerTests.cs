@@ -10,44 +10,25 @@ namespace LogAn.UnitTests
     [TestFixture]
     public class LogAnalyzerTests
     {
-        private LogAnalyzer logAnalyzer = null;
-
-        [SetUp]
-        public void SetUp()
-        {
-            logAnalyzer = new LogAnalyzer();
-        }
-
-        [TestCase("filewithgoodextension.slf", true)]
-        [TestCase("filewithgoodextension.SLF", true)]
-        [TestCase("filewithgoodextension.foo", false)]
-        public void IsValidLogFileName_ValidExtensions_ReturnsTrue(string fileName, bool expectedResult)
-        {
-            bool result = logAnalyzer.IsValidLogFileName(fileName);
-            Assert.AreEqual(expectedResult, result);
-        }
-
-
         [Test]
-        public void IsValidLogFileName_EmptyFileName_Throws()
+        public void IsValidFileName_NameSupportedExtension_ReturnsTrue()
         {
-            var ex = Assert.Catch<Exception>(() => logAnalyzer.IsValidLogFileName(""));
-            StringAssert.Contains("filename has to be provided", ex.Message);
-        }
+            FakeExtensionManager manager = new FakeExtensionManager();
+            manager.WillBeValid = true;
 
-        [TestCase("bedname.foo", false)]
-        [TestCase("goodname.slf", true)]
-        public void IsValidLogFileName_WhenCalled_ChangesWasLastFileNameValid(string fileName, bool expected)
-        {
-            logAnalyzer.IsValidLogFileName(fileName);
-            Assert.AreEqual(expected, logAnalyzer.WasLastFileNAmeValid);
+            LogAnalyzer logAnalyzer = new LogAnalyzer(manager);
+            bool result = logAnalyzer.IsValidLogFileName("short.ext");
+            Assert.True(result);
         }
+    }
 
-        [TearDown]
-        public void TearDown()
+    internal class FakeExtensionManager : IExtensionManager
+    {
+        public bool WillBeValid = false;
+
+        public bool IsValid(string fileName)
         {
-            // antipattern
-            logAnalyzer = null;
+            return WillBeValid;
         }
     }
 }

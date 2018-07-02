@@ -8,22 +8,44 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
-        public bool WasLastFileNAmeValid { get; set; }
+        private IExtensionManager manager;
+
+        public LogAnalyzer(IExtensionManager manager)
+        {
+            this.manager = manager;
+        }
 
         public bool IsValidLogFileName(string fileName)
         {
-            WasLastFileNAmeValid = false;
+            return manager.IsValid(fileName);
+        }
+    }
 
-            if (string.IsNullOrEmpty(fileName))
-            {
-                throw new ArgumentException("filename has to be provided");
-            }
-            if (!fileName.EndsWith(".SLF", StringComparison.CurrentCultureIgnoreCase))
-            {
-                return false;
-            }
+    //public class FileExtensionManager : IExtensionManager
+    //{
+    //    public bool IsValid(string fileName)
+    //    {
+    //        if (string.IsNullOrEmpty(fileName))
+    //        {
+    //            throw new ArgumentException("filename has to be provided");
+    //        }
+    //        if (!fileName.EndsWith(".SLF", StringComparison.CurrentCultureIgnoreCase))
+    //        {
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+    //}
 
-            WasLastFileNAmeValid = true;
+    public interface IExtensionManager
+    {
+        bool IsValid(string fileName);
+    }
+
+    public class AlwaysValidFakeExtensionManager : IExtensionManager
+    {
+        public bool IsValid(string fileName)
+        {
             return true;
         }
     }
