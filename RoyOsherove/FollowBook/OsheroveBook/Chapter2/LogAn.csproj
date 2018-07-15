@@ -44,7 +44,13 @@
   <ItemGroup>
     <Compile Include="EmailService\FakeEmailService.cs" />
     <Compile Include="EmailService\IEmailService.cs" />
+    <Compile Include="FakeLogger\FakeLogger.cs" />
+    <Compile Include="FileNameRules\FileNameRules.cs" />
+    <Compile Include="FileNameRules\IFileNameRules.cs" />
     <Compile Include="LogAnalyzer.cs" />
+    <Compile Include="LogAnalyzer2\Interfaces.cs" />
+    <Compile Include="LogAnalyzer2\LogAnalyzer2.cs" />
+    <Compile Include="LogAnalyzer2\Services.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebService\FakeWebService.cs" />
