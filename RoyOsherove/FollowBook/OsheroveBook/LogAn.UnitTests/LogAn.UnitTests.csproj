@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventActivitiesTests\EventRelatedTests.cs" />
     <Compile Include="LogAnalyzer2Tests\LogAnalyzer2Tests.cs" />
     <Compile Include="LogAnalyzerExceptionTests.cs" />
     <Compile Include="LogAnalyzerFakeRulesTests.cs" />

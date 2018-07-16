@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="EmailService\FakeEmailService.cs" />
     <Compile Include="EmailService\IEmailService.cs" />
+    <Compile Include="EventActivities\Interfaces.cs" />
+    <Compile Include="EventActivities\Presenter.cs" />
     <Compile Include="FakeLogger\FakeLogger.cs" />
     <Compile Include="FileNameRules\FileNameRules.cs" />
     <Compile Include="FileNameRules\IFileNameRules.cs" />
@@ -63,5 +65,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
