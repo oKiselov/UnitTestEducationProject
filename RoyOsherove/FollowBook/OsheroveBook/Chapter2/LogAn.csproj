@@ -51,6 +51,10 @@
     <Compile Include="LogAnalyzer2\Interfaces.cs" />
     <Compile Include="LogAnalyzer2\LogAnalyzer2.cs" />
     <Compile Include="LogAnalyzer2\Services.cs" />
+    <Compile Include="LogAnalyzer3\ErrorInfo.cs" />
+    <Compile Include="LogAnalyzer3\Interfaces.cs" />
+    <Compile Include="LogAnalyzer3\LogAnalyzer3.cs" />
+    <Compile Include="LogAnalyzer3\Services.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebService\FakeWebService.cs" />
